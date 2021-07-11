@@ -3,7 +3,9 @@ from sklearn.model_selection import train_test_split
 
 
 def gen_data(
-    max_symbol=10, training_path="training.txt", validation_path="validation.txt"
+    max_symbol=100,
+    training_path="training_100.txt",
+    validation_path="validation_100.txt",
 ):
     numbers = []
     for i in range(max_symbol):

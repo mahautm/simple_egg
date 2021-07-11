@@ -1,0 +1,75 @@
+{
+    "game_type": [
+        "sum"
+    ],
+    "train_data": [
+        "data/training.txt"
+    ],
+    "validation_data": [
+        "data/validation.txt"
+    ],
+    "n_attributes": [
+        2
+    ],
+    "batch_size": [
+        70
+    ],
+    "validation_batch_size": [
+        30
+    ],
+    "n_epochs": [
+        10000
+    ],
+    "sender_hidden": [
+        10,
+        20,
+        100
+    ],
+    "receiver_hidden": [
+        10,
+        20,
+        100
+    ],
+    "sender_embedding": [
+        20
+    ],
+    "receiver_embedding": [
+        20
+    ],
+    "mode": [
+        "gs",
+        "rf"
+    ],
+    "max_len": [
+        1,
+        2
+    ],
+    "random_seed": [
+        0,
+        1,
+        2,
+        3,
+        4
+    ],
+    "vocab_size": [
+        10,
+        20,
+        30,
+        100
+    ],
+    "sender_cell": [
+        "gru"
+    ],
+    "receiver_cell": [
+        "gru"
+    ],
+    "lr": [
+        0.01
+    ],
+    "print_validation_events": [
+        ""
+    ],
+    "tensorboard": [
+        ""
+    ]
+}
