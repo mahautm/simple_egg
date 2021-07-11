@@ -1,12 +1,12 @@
 {
     "game_type": [
-        "sum"
+        "'sum'"
     ],
     "train_data": [
-        "data/training.txt"
+        "'data/training.txt'"
     ],
     "validation_data": [
-        "data/validation.txt"
+        "'data/validation.txt'"
     ],
     "n_attributes": [
         2
@@ -37,8 +37,8 @@
         20
     ],
     "mode": [
-        "gs",
-        "rf"
+        "'gs'",
+        "'rf'"
     ],
     "max_len": [
         1,
@@ -54,14 +54,13 @@
     "vocab_size": [
         10,
         20,
-        30,
         100
     ],
     "sender_cell": [
-        "gru"
+        "'gru'"
     ],
     "receiver_cell": [
-        "gru"
+        "'gru'"
     ],
     "lr": [
         0.01
