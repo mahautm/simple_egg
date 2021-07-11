@@ -17,6 +17,9 @@
     "validation_batch_size": [
         30
     ],
+    "n_values": [
+        10
+    ],
     "n_epochs": [
         10000
     ],
