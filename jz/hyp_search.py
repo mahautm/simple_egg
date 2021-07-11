@@ -25,6 +25,7 @@ def run_batch(path):
         txt_params += f" --tensorboard_dir={logdir}"
         if not os.path.exists(logdir):
             os.makedirs(logdir)
+            print(txt_params)
         run_exp(job_name, "first_exp.py", txt_params, gpu=True, time="1:00:00")
 
 
