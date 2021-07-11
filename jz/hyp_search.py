@@ -1,6 +1,6 @@
 import json
 import itertools
-from jz.looper import run_exp
+from looper import run_exp
 import os
 
 
