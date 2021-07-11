@@ -19,7 +19,8 @@ def run_batch(path):
         job_name = "egg"
         for i, element in enumerate(combination):
             txt_params += f" --{param_names[i]} {element}"
-            job_name += f"_{param_names[i][:2]}{element}"
+            if "data" not in param_names[i]:  # avoid paths
+                job_name += f"_{param_names[i][:2]}{element}"
         logdir = f"/gpfsscratch/rech/imi/ude64um/simple_egg_exp/{job_name}"
         txt_params += f" --tensorboard_dir={logdir}"
         if not os.path.exists(logdir):
