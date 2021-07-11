@@ -27,4 +27,4 @@ def run_batch(path):
         run_exp(job_name, "first_exp.py", txt_params, gpu=True, time="1:00:00")
 
 
-run_batch("hyper_params.json")
+run_batch("jz/hyper_params.json")
