@@ -7,12 +7,15 @@ import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
 import egg.core as core
+
 # from egg.core import Callback, Interaction, PrintValidationEvents
-from egg.zoo.basic_games.architectures import , RecoReceiver, Sender
+from egg.zoo.basic_games.architectures import RecoReceiver, Sender
+
 # from egg.zoo.basic_games.data_readers import AttValDiscriDataset, AttValRecoDataset
 from egg.zoo.basic_games.play import get_params
 from data_reader import AttValSumDataset
 from egg.core.callbacks import InteractionSaver
+
 
 def main(params):
     opts = get_params(params)
@@ -113,7 +116,12 @@ def main(params):
         # callback functions can be passed to the trainer object (see below) to operate at certain steps of training and validation
         # for example, the TemperatureUpdater (defined in callbacks.py in the core directory) will update the Gumbel-Softmax temperature hyperparameter
         # after each epoch
-        callbacks = [core.TemperatureUpdater(agent=sender, decay=0.9, minimum=0.1), InteractionSaver(checkpoint_dir="/gpfsscratch/rech/imi/ude64um/simple_egg_exp/")]
+        callbacks = [
+            core.TemperatureUpdater(agent=sender, decay=0.9, minimum=0.1),
+            InteractionSaver(
+                checkpoint_dir="/gpfsscratch/rech/imi/ude64um/simple_egg_exp/"
+            ),
+        ]
     else:  # NB: any other string than gs will lead to rf training!
         # here, the interesting thing to note is that we use the same core architectures we defined above, but now we embed them in wrappers that are suited to
         # Reinforce-based optmization
