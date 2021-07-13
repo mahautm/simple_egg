@@ -120,7 +120,7 @@ def main(params):
         callbacks = [
             core.TemperatureUpdater(agent=sender, decay=0.9, minimum=0.1),
             InteractionSaver(
-                checkpoint_dir="/gpfsscratch/rech/imi/ude64um/simple_egg_exp/"
+                checkpoint_dir=f"/gpfsscratch/rech/imi/ude64um/simple_egg_exp/vo{opts.vocab_size}_ma{opts.max_len}"
             ),
             MessageEntropy(is_gumbel=True),
             TopographicSimilarity(),
