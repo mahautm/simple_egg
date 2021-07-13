@@ -15,6 +15,7 @@ from egg.zoo.basic_games.architectures import RecoReceiver, Sender
 from egg.zoo.basic_games.play import get_params
 from data_reader import AttValSumDataset
 from egg.core.callbacks import InteractionSaver
+from egg.core.language_analysis import MessageEntropy, TopographicSimilarity, Disent
 
 
 def main(params):
@@ -121,33 +122,10 @@ def main(params):
             InteractionSaver(
                 checkpoint_dir="/gpfsscratch/rech/imi/ude64um/simple_egg_exp/"
             ),
+            MessageEntropy(is_gumbel=True),
+            TopographicSimilarity(),
+            # Disent(vocab_size=opts.vocab_size, is_gumbel=True),
         ]
-    else:  # NB: any other string than gs will lead to rf training!
-        # here, the interesting thing to note is that we use the same core architectures we defined above, but now we embed them in wrappers that are suited to
-        # Reinforce-based optmization
-        sender = core.RnnSenderReinforce(
-            sender,
-            vocab_size=opts.vocab_size,
-            embed_dim=opts.sender_embedding,
-            hidden_size=opts.sender_hidden,
-            cell=opts.sender_cell,
-            max_len=opts.max_len,
-        )
-        receiver = core.RnnReceiverDeterministic(
-            receiver,
-            vocab_size=opts.vocab_size,
-            embed_dim=opts.receiver_embedding,
-            hidden_size=opts.receiver_hidden,
-            cell=opts.receiver_cell,
-        )
-        game = core.SenderReceiverRnnReinforce(
-            sender,
-            receiver,
-            loss,
-            sender_entropy_coeff=opts.sender_entropy_coeff,
-            receiver_entropy_coeff=0,
-        )
-        callbacks = []
 
     # we are almost ready to train: we define here an optimizer calling standard pytorch functionality
     optimizer = core.build_optimizer(game.parameters())

@@ -52,6 +52,7 @@
     "vocab_size": [
         10,
         20,
+        40,
         100
     ],
     "sender_cell": [
