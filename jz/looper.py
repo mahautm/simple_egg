@@ -8,8 +8,8 @@ email = "mmahaut@ensc.fr"
 logs_dir = "/gpfsscratch/rech/imi/ude64um/logs"
 python_path = "python"
 slurm_dir = "/gpfsscratch/rech/imi/ude64um/slurm"
-code_dir = "/gpfswork/rech/imi/ude64um/innovation"
-preparatory_commands = "module purge\n module load pytorch-gpu/py3/1.7.1\n"
+code_dir = "/gpfswork/rech/imi/ude64um/simple_egg"
+preparatory_commands = "module purge\n module load pytorch-gpu/py3/1.8.1\n"
 
 
 def run_exp(
