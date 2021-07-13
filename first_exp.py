@@ -14,8 +14,8 @@ from egg.zoo.basic_games.architectures import RecoReceiver, Sender
 # from egg.zoo.basic_games.data_readers import AttValDiscriDataset, AttValRecoDataset
 from egg.zoo.basic_games.play import get_params
 from data_reader import AttValSumDataset
-from egg.core.callbacks import InteractionSaver
-from egg.core.language_analysis import MessageEntropy, TopographicSimilarity, Disent
+from egg.core.callbacks import InteractionSaver, CheckpointSaver
+from egg.core.language_analysis import MessageEntropy
 
 
 def main(params):
@@ -117,13 +117,12 @@ def main(params):
         # callback functions can be passed to the trainer object (see below) to operate at certain steps of training and validation
         # for example, the TemperatureUpdater (defined in callbacks.py in the core directory) will update the Gumbel-Softmax temperature hyperparameter
         # after each epoch
+        path = f"/gpfsscratch/rech/imi/ude64um/simple_egg_exp/vo{opts.vocab_size}_ma{opts.max_len}"
         callbacks = [
             core.TemperatureUpdater(agent=sender, decay=0.9, minimum=0.1),
-            InteractionSaver(
-                checkpoint_dir=f"/gpfsscratch/rech/imi/ude64um/simple_egg_exp/vo{opts.vocab_size}_ma{opts.max_len}"
-            ),
+            InteractionSaver(checkpoint_dir=path),
+            CheckpointSaver(checkpoint_path=path, checkpoint_freq=500),
             MessageEntropy(is_gumbel=True),
-            TopographicSimilarity(),
             # Disent(vocab_size=opts.vocab_size, is_gumbel=True),
         ]
 
