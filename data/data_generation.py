@@ -1,11 +1,17 @@
+# This script is used to generate data in the txt file. Only the input is written down, labels are computed by the data loader
+
 import random
 from sklearn.model_selection import train_test_split
 
 
-def gen_data(
-    max_symbol=100,
-    training_path="training_100.txt",
-    validation_path="validation_100.txt",
+def gen_data():
+    pass
+
+
+def gen_rand_data(
+    max_symbol=10,
+    training_path="training.txt",
+    validation_path="validation.txt",
 ):
     numbers = []
     for i in range(max_symbol):

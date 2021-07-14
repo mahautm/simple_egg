@@ -1,3 +1,5 @@
+# slight modification to the data loader so that labels are sum of inputs
+
 import numpy as np
 import torch
 from torch.utils.data import Dataset
@@ -16,7 +18,9 @@ class AttValSumDataset(Dataset):
             z = torch.zeros((n_attributes, n_values))
             for i in range(n_attributes):
                 z[i, config[i]] = 1
-            label = torch.tensor(np.sum(list(map(int, row))))  # <-- here be the change !!
+            label = torch.tensor(
+                np.sum(list(map(int, row)))
+            )  # <-- here be the change !!
             self.frame.append((z.view(-1), label))
 
     def get_n_features(self):

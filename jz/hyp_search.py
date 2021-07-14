@@ -1,3 +1,5 @@
+# run experiments on a cluster (here jeanzay)
+
 import json
 import itertools
 from looper import run_exp
